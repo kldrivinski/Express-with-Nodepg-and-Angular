@@ -1,0 +1,36 @@
+<button type="button" (click)="showForm()">Add</button>
+
+
+
+<section class="addform" *ngIf="add">
+    <form (ngSubmit)="addCartItem(additem)" #additem="ngForm">
+        <label>Product <input type="text" name="product" ngModel></label>
+        <label>Price <input type="number" name="price" ngModel></label>
+        <label>Quantity <input type="number" name="quantity" ngModel></label>
+        <button type="submit">Submit</button>
+    </form>
+
+</section>
+
+
+
+<H1>
+    Items!
+</H1>
+
+<section class="list">
+    <section class="items" *ngFor=" let item of items; index as i">
+        <p>Product: {{item.product}}</p>
+        <p>Price: {{item.price}}</p>
+        <p *ngIf="index !== i">Quantity: {{item.quantity}}</p>
+        <section *ngIf="index === i">
+            <form (ngSubmit)="editItemQuantity(quantity)" #quantity="ngForm">
+                <label>Quantity <input type="number" name="quantity" ngModel></label>
+            </form>
+        </section>
+        <p>ID: {{item.id}}</p>
+        <p><button type="button" (click)="deleteCartItem(item.id)">Delete</button></p>
+        <p><button type="button" (click)="editQuantity(item.id)" (click)="setIndex(i)">Edit</button></p>
+
+    </section>
+</section>

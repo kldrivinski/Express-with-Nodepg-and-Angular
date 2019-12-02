@@ -1,0 +1,9 @@
+.list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.items {
+    border: 2px solid black;
+    padding: 20px;
+}
